@@ -15,9 +15,9 @@ canvas{
     height: 30vw;
     width: 30vw;
     background-color: red;
-    margin: auto;
+    margin: auto; /*This is to ensure that the canvas is at the centre at all times*/
     border: 3px blue solid;
 }
 img{
-    /* display: none; */
+    display: none;
 }
