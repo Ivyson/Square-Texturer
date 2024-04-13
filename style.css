@@ -1,0 +1,23 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: 2px solid black;
+}
+canvas{
+    height: 30vw;
+    width: 30vw;
+    background-color: red;
+    margin: auto;
+    border: 3px blue solid;
+}
+img{
+    /* display: none; */
+}
