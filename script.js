@@ -38,13 +38,19 @@ webgl.bufferData(webgl.ARRAY_BUFFER, texCordinates, webgl.STATIC_DRAW);
 let Texturet = webgl.createTexture();
 webgl.pixelStorei(webgl.UNPACK_FLIP_Y_WEBGL, true); //This flips the image orientation to be upright.
 webgl.activeTexture(webgl.TEXTURE0);
-webgl.bindTexture(webgl.TEXTURE_2D, Texturet);
-webgl.texParameteri(webgl.TEXTURE_2D, webgl.TEXTURE_WRAP_S, webgl.CLAMP_TO_EDGE);
-webgl.texParameteri(webgl.TEXTURE_2D, webgl.TEXTURE_WRAP_T, webgl.CLAMP_TO_EDGE);
-webgl.texParameteri(webgl.TEXTURE_2D, webgl.TEXTURE_MAG_FILTER, webgl.LINEAR);
-webgl.texParameteri(webgl.TEXTURE_2D, webgl.TEXTURE_MIN_FILTER, webgl.LINEAR);
-webgl.texImage2D(webgl.TEXTURE_2D, 0, webgl.RGBA, webgl.RGBA, webgl.UNSIGNED_BYTE, image);
+if(isPower(image.width) && isPower(height))
+{
+    webgl.generateMipmap(webgl.TEXTURE_2D);
+}
+else{
 
+    webgl.bindTexture(webgl.TEXTURE_2D, Texturet);
+    webgl.texParameteri(webgl.TEXTURE_2D, webgl.TEXTURE_WRAP_S, webgl.CLAMP_TO_EDGE);
+    webgl.texParameteri(webgl.TEXTURE_2D, webgl.TEXTURE_WRAP_T, webgl.CLAMP_TO_EDGE);
+    webgl.texParameteri(webgl.TEXTURE_2D, webgl.TEXTURE_MAG_FILTER, webgl.LINEAR);
+    webgl.texParameteri(webgl.TEXTURE_2D, webgl.TEXTURE_MIN_FILTER, webgl.LINEAR);
+}
+webgl.texImage2D(webgl.TEXTURE_2D, 0, webgl.RGBA, webgl.RGBA, webgl.UNSIGNED_BYTE, image);
 
 
 
@@ -103,3 +109,10 @@ webgl.enableVertexAttribArray(tPosition);
 webgl.vertexAttribPointer(tPosition, 2, webgl.FLOAT, false, 0, 0);
 
 webgl.drawArrays(webgl.TRIANGLES, 0, 6);
+
+function isPower(value)
+{
+    console.log(value);
+    console.log(value - 1);
+    return( value & (value -1)) === 0;
+}
