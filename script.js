@@ -52,6 +52,7 @@ let vsShader = `
 precision highp float;
 attribute vec2 vecposition;
 attribute vec2 vTexture;
+//varying highp vec2 fTexture;
 varying highp vec2 fTexture;
 void main(){
     fTexture = vTexture;
@@ -61,6 +62,7 @@ void main(){
 `;
 let fsShader = `
 precision highp float;
+//varying highp vec2 fTexture;
 varying highp vec2 fTexture;
 uniform sampler2D fSampler;
 void main()
